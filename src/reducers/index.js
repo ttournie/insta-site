@@ -1,3 +1,6 @@
-// Set up your root reducer here...
  import { combineReducers } from 'redux';
- export default combineReducers;
+ import {instagramReducer} from './instagramReducer'
+
+ export default combineReducers({
+   pictures: instagramReducer,
+ });
