@@ -20,9 +20,9 @@ class PictureList extends React.Component {
   render() {
     return (
       <div className="PictureList">
-        <Search submitTags={this.submitTags.bind(this)}/>
+        {/*<Search submitTags={this.submitTags.bind(this)}/>*/}
         {this.props.pictures.map((picture,key) =>
-          <div key={key}>
+          <div className="Picture" key={key}>
             <img src={picture.images.standard_resolution.url}/>
           </div>
         )
