@@ -14,7 +14,7 @@ class PictureList extends React.Component {
   }
 
   submitTags(tags) {
-    this.props.fetchTags(input);
+    this.props.fetchTags(tags);
   }
 
   render() {
@@ -26,7 +26,7 @@ class PictureList extends React.Component {
             {picture.link}
           </div>
         )
-        }  
+        }
       </div>
     )
   }
@@ -43,7 +43,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchPictures: pictures => dispatch(fetchPictures()),
-    fetchTags: pictures => dispatch(fetchTags(tags))
+    fetchTags: tags => dispatch(fetchTags(tags))
   }
 };
 
