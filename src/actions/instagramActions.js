@@ -1,20 +1,17 @@
-import InstagramAPI from 'instagram-api';
-import config from '../../config.js';
+import axios from "axios";
 
 export const fetchPictures = () => {
   return (dispatch) => {
-    var accessToken = config.access_token;
-    var instagramAPI = new InstagramAPI(accessToken);
-    // Make the request.
-    instagramAPI.userSelfMedia()
-    .then(function(result) {
-      console.log(result);
+    // Call express server to get the Data (and avoid CORS);
+    axios.get('http://localhost:8080/pictures')
+    .then((response) => {
       dispatch({
       type: 'FETCH_PICTURES_SUCCESS',
-      pictures: result.data
+      pictures: response.data
       })
-    }, function(err){
-        console.log(err);
-    });
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   }
 }
