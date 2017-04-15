@@ -15,3 +15,22 @@ export const fetchPictures = () => {
     })
   }
 }
+
+export const fetchTags = (tags) => {
+  return (dispatch) => {
+    axios.get('http://localhost:8080/tags',
+    params: {
+            tags: tags,
+          }
+    )
+    .then((response) => {
+      dispatch({
+        'type': 'FETCH_TAGS_SUCCESS',
+        pictures: response.data
+      })
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
+}

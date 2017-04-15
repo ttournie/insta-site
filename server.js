@@ -38,6 +38,17 @@ app.get("/pictures", function (req, res) {
   });
 });
 
+// Search tags.
+app.get("/tags", function (req, res) {
+  // Make the request to the API.
+  insta.searchTags(req.param("tags"))
+  .then(function(result) {
+    res.send(result.data);
+  }, function(err){
+      console.log(err);
+  });
+});
+
 // Let express create the server.
 var server = app.listen(port);
 console.log("Server started");

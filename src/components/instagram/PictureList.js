@@ -1,7 +1,8 @@
 import React from 'react';
 import { fetchPictures } from '../../actions/instagramActions';
+import { fetchTags } from '../../actions/instagramActions';
 import { connect } from 'react-redux';
-
+import Search from '../common/Search.js';
 
 class PictureList extends React.Component {
   constructor(props) {
@@ -9,18 +10,23 @@ class PictureList extends React.Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(fetchPictures());
+    this.props.fetchPictures();
+  }
+
+  submitTags(tags) {
+    this.props.fetchTags(input);
   }
 
   render() {
     return (
       <div className="PictureList">
+        <Search submitTags={this.submitTags.bind(this)}/>
         {this.props.pictures.map((picture,key) =>
           <div key={key}>
             {picture.link}
           </div>
         )
-        }
+        }  
       </div>
     )
   }
@@ -33,4 +39,12 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-export default connect(mapStateToProps)(PictureList);
+// Maps actions to props
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPictures: pictures => dispatch(fetchPictures()),
+    fetchTags: pictures => dispatch(fetchTags(tags))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PictureList);
