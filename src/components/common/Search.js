@@ -5,10 +5,6 @@ const Search = (props) => {
   return (
     <form onSubmit={e => {
             e.preventDefault();
-            // Assemble data into object
-            var input = {
-              tags: tagsInput.value,
-            };
             console.log(tagsInput.value);
             // Call method from parent component
             // to handle submission

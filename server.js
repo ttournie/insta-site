@@ -40,9 +40,8 @@ app.get("/pictures", function (req, res) {
 
 // Search tags.
 app.get("/tags", function (req, res) {
-  console.log(req);
   // Make the request to the API.
-  insta.searchTags(req.param("tags"))
+  insta.userSelfMedia(req.param("tags"))
   .then(function(result) {
     res.send(result.data);
   }, function(err){

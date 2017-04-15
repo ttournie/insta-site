@@ -23,7 +23,7 @@ class PictureList extends React.Component {
         <Search submitTags={this.submitTags.bind(this)}/>
         {this.props.pictures.map((picture,key) =>
           <div key={key}>
-            {picture.link}
+            <img src={picture.images.standard_resolution.url}/>
           </div>
         )
         }
